@@ -21,53 +21,54 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.net.smi.lancamento.model.Empresa;
-import br.net.smi.lancamento.repository.EmpresaRepository;
-import br.net.smi.lancamento.repository.filter.EmpresaFilter;
-import br.net.smi.lancamento.service.EmpresaService;
+import br.net.smi.lancamento.model.Lancamento;
+import br.net.smi.lancamento.repository.LancamentoRepository;
+import br.net.smi.lancamento.repository.filter.LancamentoFilter;
+import br.net.smi.lancamento.service.LancamentoService;
 
 @RestController
-@RequestMapping("/empresas")
-public class EmpresaResource {
+@RequestMapping("/lancamentos")
+public class LancamentoResource {
 
 	@Autowired
-	private EmpresaRepository empresaRepository;
+	private LancamentoRepository lancamentoRepository;
 	
 	@Autowired
-	private EmpresaService empresaService;
+	private LancamentoService lancamentoService;
 	
 	@GetMapping
-	public Page<Empresa> pesquisar(EmpresaFilter empresaFilter, Pageable pageable) {
-		return empresaRepository.filtrar(empresaFilter, pageable);
-	}
-	
-	@PostMapping
-	public ResponseEntity<Empresa> criar(@Valid @RequestBody Empresa empresa, HttpServletResponse response) {
-		Empresa empresaSalva = empresaRepository.save(empresa);
-		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
-				.buildAndExpand(empresaSalva.getID()).toUri();
-			response.setHeader("Location", uri.toASCIIString());
-			
-			return ResponseEntity.created(uri).body(empresaSalva);
+	public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
+		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Empresa> buscarPeloID(@PathVariable Long id) {
-		Empresa empresa = empresaRepository.findOne(id);
-		 return empresa != null ? ResponseEntity.ok(empresa) : ResponseEntity.notFound().build();
+	public ResponseEntity<Lancamento> buscarPeloID(@PathVariable Long id) {
+		Lancamento lancamento = lancamentoRepository.findOne(id);
+		return lancamento != null ? ResponseEntity.ok(lancamento) : ResponseEntity.notFound().build();
+	}
+	
+	@PostMapping
+	public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento lancamento, HttpServletResponse response) {
+		Lancamento lancamentoSalva = lancamentoRepository.save(lancamento);
+		
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
+				.buildAndExpand(lancamentoSalva.getID()).toUri();
+			response.setHeader("Location", uri.toASCIIString());
+			
+			return ResponseEntity.created(uri).body(lancamentoSalva);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long id) {
-		empresaRepository.delete(id);
+		lancamentoRepository.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Empresa> atualizar(@PathVariable Long id, @Valid @RequestBody Empresa empresa) {
-		Empresa empresaSalva = empresaService.atualizar(id, empresa);
-		return ResponseEntity.ok(empresaSalva);
+	public ResponseEntity<Lancamento> atualizar(@PathVariable Long id, @Valid @RequestBody Lancamento lancamento) {
+		Lancamento lancamentoSalva = lancamentoService.atualizar(id, lancamento);
+		return ResponseEntity.ok(lancamentoSalva);
 	}
+
 	
 }

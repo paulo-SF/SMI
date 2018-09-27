@@ -7,3 +7,4 @@ CREATE TABLE categoria (
 INSERT INTO categoria (descricao) values ('Faturamento de cliente');
 INSERT INTO categoria (descricao) values ('Aluguel de sala');
 INSERT INTO categoria (descricao) values ('Conta de luz');
+INSERT INTO categoria (descricao) values ('Conta de água');
