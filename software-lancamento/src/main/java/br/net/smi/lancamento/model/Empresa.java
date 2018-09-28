@@ -21,7 +21,7 @@ public class Empresa {
 	private String nome;
 
 	@NotNull
-	@Size(min = 14, message = "O CNPJ precisa ter 14 caracteres")
+	@Size(max = 14, message = "O CNPJ precisa ter 14 caracteres")
 	private String cnpj;
 
 	private String nome_responsavel;

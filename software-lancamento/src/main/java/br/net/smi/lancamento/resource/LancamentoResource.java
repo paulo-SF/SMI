@@ -32,43 +32,42 @@ public class LancamentoResource {
 
 	@Autowired
 	private LancamentoRepository lancamentoRepository;
-	
+
 	@Autowired
 	private LancamentoService lancamentoService;
-	
+
 	@GetMapping
 	public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
 		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Lancamento> buscarPeloID(@PathVariable Long id) {
 		Lancamento lancamento = lancamentoRepository.findOne(id);
 		return lancamento != null ? ResponseEntity.ok(lancamento) : ResponseEntity.notFound().build();
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento lancamento, HttpServletResponse response) {
 		Lancamento lancamentoSalva = lancamentoRepository.save(lancamento);
-		
+
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
 				.buildAndExpand(lancamentoSalva.getID()).toUri();
-			response.setHeader("Location", uri.toASCIIString());
-			
-			return ResponseEntity.created(uri).body(lancamentoSalva);
+		response.setHeader("Location", uri.toASCIIString());
+
+		return ResponseEntity.created(uri).body(lancamentoSalva);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long id) {
 		lancamentoRepository.delete(id);
 	}
-	
+
 	@PutMapping("/{id}")
 	public ResponseEntity<Lancamento> atualizar(@PathVariable Long id, @Valid @RequestBody Lancamento lancamento) {
 		Lancamento lancamentoSalva = lancamentoService.atualizar(id, lancamento);
 		return ResponseEntity.ok(lancamentoSalva);
 	}
 
-	
 }

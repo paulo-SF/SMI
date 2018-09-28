@@ -9,5 +9,5 @@ import br.net.smi.lancamento.repository.filter.LancamentoFilter;
 public interface LancamentoRepositoryQuery {
 
 	public Page<Lancamento> filtrar(LancamentoFilter lancamentoFilter, Pageable pageable);
-	
+
 }

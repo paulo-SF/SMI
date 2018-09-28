@@ -10,7 +10,7 @@ import br.net.smi.lancamento.repository.EmpresaRepository;
 
 @Service
 public class EmpresaService {
-	
+
 	@Autowired
 	private EmpresaRepository empresaRepository;
 
@@ -19,9 +19,9 @@ public class EmpresaService {
 		if (empresaSalva == null) {
 			throw new EmptyResultDataAccessException(1);
 		}
-		
+
 		BeanUtils.copyProperties(empresa, empresaSalva, "codigo");
 		return empresaRepository.save(empresaSalva);
 	}
-	
+
 }

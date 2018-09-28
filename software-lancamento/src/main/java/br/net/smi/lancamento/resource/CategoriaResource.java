@@ -30,7 +30,7 @@ public class CategoriaResource {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	@Autowired
 	private CategoriaService categoriaService;
 
@@ -53,15 +53,15 @@ public class CategoriaResource {
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> buscarPeloID(@PathVariable Long id) {
 		Categoria categoria = categoriaRepository.findOne(id);
-		 return categoria != null ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
+		return categoria != null ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long id) {
 		categoriaRepository.delete(id);
 	}
-	
+
 	@PutMapping("/{id}")
 	public ResponseEntity<Categoria> atualizar(@PathVariable Long id, @Valid @RequestBody Categoria categoria) {
 		Categoria categoriaSalva = categoriaService.atualizar(id, categoria);

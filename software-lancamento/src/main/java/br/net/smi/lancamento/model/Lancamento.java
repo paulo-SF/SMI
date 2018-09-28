@@ -20,14 +20,14 @@ public class Lancamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	@Column(name = "vencimento")
 	private LocalDate vencimento;
-	
+
 	@NotNull
 	private BigDecimal valor;
-	
+
 	@NotNull
 	private String tipo;
 
@@ -35,7 +35,7 @@ public class Lancamento {
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
 	private Categoria categoria;
-	
+
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_empresa")
@@ -64,7 +64,7 @@ public class Lancamento {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	
+
 	public String getTipo() {
 		return tipo;
 	}
@@ -113,5 +113,5 @@ public class Lancamento {
 			return false;
 		return true;
 	}
-	
+
 }

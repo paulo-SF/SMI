@@ -9,5 +9,5 @@ import br.net.smi.lancamento.repository.filter.EmpresaFilter;
 public interface EmpresaRepositoryQuery {
 
 	public Page<Empresa> filtrar(EmpresaFilter empresaFilter, Pageable pageable);
-	
-} 
+
+}

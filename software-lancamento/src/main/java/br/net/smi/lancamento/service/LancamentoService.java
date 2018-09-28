@@ -10,7 +10,7 @@ import br.net.smi.lancamento.repository.LancamentoRepository;
 
 @Service
 public class LancamentoService {
-	
+
 	@Autowired
 	private LancamentoRepository lancamentoRepository;
 
@@ -19,9 +19,9 @@ public class LancamentoService {
 		if (lancamentoSalva == null) {
 			throw new EmptyResultDataAccessException(1);
 		}
-		
+
 		BeanUtils.copyProperties(lancamento, lancamentoSalva, "codigo");
 		return lancamentoRepository.save(lancamentoSalva);
 	}
-	
+
 }

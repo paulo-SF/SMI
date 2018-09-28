@@ -32,42 +32,42 @@ public class EmpresaResource {
 
 	@Autowired
 	private EmpresaRepository empresaRepository;
-	
+
 	@Autowired
 	private EmpresaService empresaService;
-	
+
 	@GetMapping
 	public Page<Empresa> pesquisar(EmpresaFilter empresaFilter, Pageable pageable) {
 		return empresaRepository.filtrar(empresaFilter, pageable);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Empresa> criar(@Valid @RequestBody Empresa empresa, HttpServletResponse response) {
 		Empresa empresaSalva = empresaRepository.save(empresa);
-		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
-				.buildAndExpand(empresaSalva.getID()).toUri();
-			response.setHeader("Location", uri.toASCIIString());
-			
-			return ResponseEntity.created(uri).body(empresaSalva);
+
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(empresaSalva.getID())
+				.toUri();
+		response.setHeader("Location", uri.toASCIIString());
+
+		return ResponseEntity.created(uri).body(empresaSalva);
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Empresa> buscarPeloID(@PathVariable Long id) {
 		Empresa empresa = empresaRepository.findOne(id);
-		 return empresa != null ? ResponseEntity.ok(empresa) : ResponseEntity.notFound().build();
+		return empresa != null ? ResponseEntity.ok(empresa) : ResponseEntity.notFound().build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long id) {
 		empresaRepository.delete(id);
 	}
-	
+
 	@PutMapping("/{id}")
 	public ResponseEntity<Empresa> atualizar(@PathVariable Long id, @Valid @RequestBody Empresa empresa) {
 		Empresa empresaSalva = empresaService.atualizar(id, empresa);
 		return ResponseEntity.ok(empresaSalva);
 	}
-	
+
 }

@@ -40,18 +40,17 @@ public class EmpresaRepositoryImpl implements EmpresaRepositoryQuery {
 		return new PageImpl<>(query.getResultList(), pageable, total(empresaFilter));
 	}
 
-	private Predicate[] criarRestricoes(EmpresaFilter empresaFilter, CriteriaBuilder builder,
-			Root<Empresa> root) {
+	private Predicate[] criarRestricoes(EmpresaFilter empresaFilter, CriteriaBuilder builder, Root<Empresa> root) {
 		List<Predicate> predicates = new ArrayList<>();
 
 		if (!StringUtils.isEmpty(empresaFilter.getNome())) {
-			predicates.add(builder.like(
-					builder.lower(root.get(Empresa_.nome)), "%" + empresaFilter.getNome().toLowerCase() + "%"));
+			predicates.add(builder.like(builder.lower(root.get(Empresa_.nome)),
+					"%" + empresaFilter.getNome().toLowerCase() + "%"));
 		}
-		
+
 		if (!StringUtils.isEmpty(empresaFilter.getCnpj())) {
-			predicates.add(builder.like(
-					builder.lower(root.get(Empresa_.cnpj)), "%" + empresaFilter.getCnpj().toLowerCase() + "%"));
+			predicates.add(builder.like(builder.lower(root.get(Empresa_.cnpj)),
+					"%" + empresaFilter.getCnpj().toLowerCase() + "%"));
 		}
 
 		return predicates.toArray(new Predicate[predicates.size()]);

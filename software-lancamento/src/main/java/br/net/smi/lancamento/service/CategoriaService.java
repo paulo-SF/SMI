@@ -10,7 +10,7 @@ import br.net.smi.lancamento.repository.CategoriaRepository;
 
 @Service
 public class CategoriaService {
-	
+
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
@@ -19,9 +19,9 @@ public class CategoriaService {
 		if (categoriaSalva == null) {
 			throw new EmptyResultDataAccessException(1);
 		}
-		
+
 		BeanUtils.copyProperties(categoria, categoriaSalva, "codigo");
 		return categoriaRepository.save(categoriaSalva);
 	}
-	
+
 }
