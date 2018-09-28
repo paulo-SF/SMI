@@ -1,110 +1,110 @@
 <div class="container-left">
 
-    <div class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light">
+  <div class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light">
 
-      <div class="pt-md-3 pb-md">
-        <h1 class="bd-title mt-0">Lançamentos</h1>
+    <div class="pt-md-3 pb-md">
+      <h1 class="bd-title mt-0">Lançamentos</h1>
+    </div>
+
+  </div>
+
+  <div class="bd-content p-5" id="content" role="main">
+    <h3 class="bd-title mt-0">Vencimento</h3>
+
+    <div class="input-group">
+
+      <div class="input-group-prepend">
+        <span class="input-group-text col mb-3">De</span>
       </div>
+      <input type="text" aria-label="vencimentoDe" class="form-control col-md-1">
+
+      <div class="input-group-prepend">
+        <span class="input-group-text col mb-3">Até</span>
+      </div>
+      <input type="text" aria-label="vencimentoAte" class="form-control col-md-1">
 
     </div>
 
-    <div class="bd-content p-5" id="content" role="main">
-      <h3 class="bd-title mt-0">Vencimento</h3>
+    <div>
+      <button type="button" class="btn btn-primary">Pesquisar</button>
+    </div>
+    <div>
 
-      <div class="input-group">
+    </div>
 
-        <div class="input-group-prepend">
-          <span class="input-group-text col mb-3">De</span>
-        </div>
-        <input type="text" aria-label="vencimentoDe" class="form-control col-md-1">
-
-        <div class="input-group-prepend">
-          <span class="input-group-text col mb-3">Até</span>
-        </div>
-        <input type="text" aria-label="vencimentoAte" class="form-control col-md-1">
-
-      </div>
-
-      <div>
-        <button type="button" class="btn btn-primary">Pesquisar</button>
-      </div>
-      <div>
-
-      </div>
-
-      <div class="table-responsive-sm p-5">
-        <table class="table table-bordered p-1">
-          <thead>
-            <tr>
-              <th scope="col">Empresa</th>
-              <th scope="col">Descrição</th>
-              <th scope="col" width="120px">Vencimento</th>
-              <th scope="col" width="120px">Tipo</th>
-              <th scope="col" width="120px">Valor</th>
-              <th scope="col" width="140px"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>SMI</td>
-              <td>Compra de pão</td>
-              <td>30/06/2018</td>
-              <td>DESPESA</td>
-              <td>4.55</td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                <button type="button" class="btn btn-primary btn-sm">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>STI</td>
-              <td>Mensalidade musculação</td>
-              <td>20/06/2018</td>
-              <td>DESPESA</td>
-              <td>85</td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                <button type="button" class="btn btn-primary btn-sm">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>TTO</td>
-              <td>Venda de software</td>
-              <td>20/09/2018</td>
-              <td>RECEITA</td>
-              <td>85000</td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                <button type="button" class="btn btn-primary btn-sm">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>TYO</td>
-              <td>Mensalidade de escola</td>
-              <td>13/04/2017</td>
-              <td>DESPESA</td>
-              <td>800</td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm">Editar</button>
-                <button type="button" class="btn btn-primary btn-sm">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>JBT</td>
-              <td>Impostos</td>
-              <td>10/08/2017</td>
-              <td>DESPESA</td>
-              <td>14312</td>
-              <td>
-                <button type="button" class="btn btn-primary btn-sm" icon="fa-pencil">Editar</button>
-                <button type="button" class="btn btn-primary btn-sm">Excluir</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <button type="button" class="btn btn-primary">Novo Lançamento</button>
-      </div>
+    <div class="table-responsive-sm p-5">
+      <table class="table table-bordered p-1">
+        <thead>
+          <tr>
+            <th scope="col">Empresa</th>
+            <th scope="col">Categoria</th>
+            <th scope="col" width="120px">Vencimento</th>
+            <th scope="col" width="120px">Tipo</th>
+            <th scope="col" width="120px">Valor</th>
+            <th scope="col" width="140px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SMI</td>
+            <td>Conta de água</td>
+            <td>30/06/2018</td>
+            <td>DESPESA</td>
+            <td>4.55</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm">Editar</button>
+              <button type="button" class="btn btn-primary btn-sm">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>STI</td>
+            <td>Conta de Luz</td>
+            <td>20/06/2018</td>
+            <td>DESPESA</td>
+            <td>85</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm">Editar</button>
+              <button type="button" class="btn btn-primary btn-sm">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>TTO</td>
+            <td>Venda de software</td>
+            <td>20/09/2018</td>
+            <td>RECEITA</td>
+            <td>85000</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm">Editar</button>
+              <button type="button" class="btn btn-primary btn-sm">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>TYO</td>
+            <td>Aluguel de Sala</td>
+            <td>13/04/2017</td>
+            <td>DESPESA</td>
+            <td>800</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm">Editar</button>
+              <button type="button" class="btn btn-primary btn-sm">Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>JBT</td>
+            <td>Impostos</td>
+            <td>10/08/2017</td>
+            <td>DESPESA</td>
+            <td>14312</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" icon="fa-pencil">Editar</button>
+              <button type="button" class="btn btn-primary btn-sm">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary">Novo Lançamento</button>
     </div>
   </div>
+</div>
